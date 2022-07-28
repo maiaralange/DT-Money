@@ -25,7 +25,9 @@ export function TransactionsTable({ transactions }: TransactionsTableProps) {
                 R$ {transaction.amount.toFixed(2)}
               </td>
               <td>{transaction.category}</td>
-              {/* <td>{transaction.createdAt.toLocaleDateString('en-US')}</td> */}
+              <td>
+                {new Date(transaction.createdAt).toLocaleDateString('pt-br')}
+              </td>
             </tr>
           ))}
         </tbody>
