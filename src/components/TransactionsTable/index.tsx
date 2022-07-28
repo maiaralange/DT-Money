@@ -1,6 +1,11 @@
+import { Transaction } from '../Dashboard';
 import { Container } from './styles';
 
-export function TransactionsTable() {
+interface TransactionsTableProps {
+  transactions: Transaction[];
+}
+
+export function TransactionsTable({ transactions }: TransactionsTableProps) {
   return (
     <Container>
       <table>
@@ -13,18 +18,16 @@ export function TransactionsTable() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Desenvolvimento de website</td>
-            <td className="deposit">R$12.000</td>
-            <td>Desenvolvimento</td>
-            <td>20/02/2021</td>
-          </tr>
-          <tr>
-            <td>Aluguel</td>
-            <td className="withdraw">-R$1.100</td>
-            <td>Casa</td>
-            <td>17/02/2021</td>
-          </tr>
+          {transactions.map((transaction) => (
+            <tr key={transaction.id}>
+              <td>{transaction.title}</td>
+              <td className={transaction.type}>
+                R$ {transaction.amount.toFixed(2)}
+              </td>
+              <td>{transaction.category}</td>
+              {/* <td>{transaction.createdAt.toLocaleDateString('en-US')}</td> */}
+            </tr>
+          ))}
         </tbody>
       </table>
     </Container>
