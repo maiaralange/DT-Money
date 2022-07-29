@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import closeImage from '../../assets/close.svg';
 import incomeImage from '../../assets/income.svg';
 import outcomeImage from '../../assets/outcome.svg';
-import { TransactionsContext } from '../../TransactionsContext';
+import { TransactionsContext } from '../../context/TransactionsContext';
 import { Container, RadioBox, TransactionTypeContainer } from './styles';
 
 export enum TransactionType {

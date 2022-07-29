@@ -2,7 +2,8 @@ import { useContext, useEffect, useState } from 'react';
 import incomeImage from '../../assets/income.svg';
 import outcomeImage from '../../assets/outcome.svg';
 import totalImage from '../../assets/total.svg';
-import { TransactionsContext } from '../../TransactionsContext';
+import { formatCurrency } from '../../commons/Formatter';
+import { TransactionsContext } from '../../context/TransactionsContext';
 import { Transaction } from '../Dashboard';
 import { TransactionType } from '../NewTransactionModal';
 import { Container } from './styles';
@@ -35,37 +36,21 @@ export function Summary() {
           <p>Entradas</p>
           <img src={incomeImage} alt="Entradas"></img>
         </header>
-        <strong>
-          {new Intl.NumberFormat('pt-BR', {
-            style: 'currency',
-            currency: 'BRL'
-          }).format(deposits)}
-        </strong>
+        <strong>{formatCurrency(deposits)}</strong>
       </div>
       <div>
         <header>
           <p>Saídas</p>
           <img src={outcomeImage} alt="Saídas"></img>
         </header>
-        <strong>
-          -
-          {new Intl.NumberFormat('pt-BR', {
-            style: 'currency',
-            currency: 'BRL'
-          }).format(withdraws)}
-        </strong>
+        <strong>- {formatCurrency(withdraws)}</strong>
       </div>
       <div className="highlight-background">
         <header>
           <p>Total</p>
           <img src={totalImage} alt="Total"></img>
         </header>
-        <strong>
-          {new Intl.NumberFormat('pt-BR', {
-            style: 'currency',
-            currency: 'BRL'
-          }).format(total)}
-        </strong>
+        <strong>{formatCurrency(total)}</strong>
       </div>
     </Container>
   );

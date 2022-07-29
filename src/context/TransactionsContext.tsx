@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useEffect, useState } from 'react';
-import { Transaction } from './components/Dashboard';
-import { api } from './services/api';
+import { Transaction } from '../components/Dashboard';
+import { api } from '../services/api';
 
 interface TransactionsProviderProps {
   children: ReactNode;
