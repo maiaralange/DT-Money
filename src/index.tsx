@@ -17,7 +17,7 @@ createServer({
           amount: 12000,
           type: TransactionType.Deposit,
           category: 'Venda',
-          createdAt: '04/13/2021'
+          createdAt: new Date('2021-04-13 09:00:00')
         },
         {
           id: 2,
@@ -25,7 +25,7 @@ createServer({
           amount: 59,
           type: TransactionType.Withdraw,
           category: 'Alimentação',
-          createdAt: '04/10/2021'
+          createdAt: new Date('2021-04-10 09:00:00')
         },
         {
           id: 3,
@@ -33,7 +33,7 @@ createServer({
           amount: 1200,
           type: TransactionType.Withdraw,
           category: 'Casa',
-          createdAt: '03/27/2021'
+          createdAt: new Date('2021-03-27 09:00:00')
         },
         {
           id: 4,
@@ -41,7 +41,7 @@ createServer({
           amount: 5400,
           type: TransactionType.Deposit,
           category: 'Venda',
-          createdAt: '03/15/2021'
+          createdAt: new Date('2021-03-15 09:00:00')
         }
       ]
     });

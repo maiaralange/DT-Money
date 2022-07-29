@@ -22,11 +22,16 @@ export function TransactionsTable({ transactions }: TransactionsTableProps) {
             <tr key={transaction.id}>
               <td>{transaction.title}</td>
               <td className={transaction.type}>
-                R$ {transaction.amount.toFixed(2)}
+                {new Intl.NumberFormat('pt-BR', {
+                  style: 'currency',
+                  currency: 'BRL'
+                }).format(transaction.amount)}
               </td>
               <td>{transaction.category}</td>
               <td>
-                {new Date(transaction.createdAt).toLocaleDateString('pt-br')}
+                {new Intl.DateTimeFormat('pt-BR').format(
+                  new Date(transaction.createdAt)
+                )}
               </td>
             </tr>
           ))}

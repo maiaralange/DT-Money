@@ -11,7 +11,7 @@ export interface Transaction {
   amount: number;
   type: TransactionType;
   category: string;
-  createdAt: Date;
+  createdAt: string;
 }
 
 export function Dashboard() {
@@ -27,7 +27,7 @@ export function Dashboard() {
 
   return (
     <Container>
-      <Summary />
+      <Summary transactions={transactions} />
       <TransactionsTable transactions={transactions} />
     </Container>
   );
