@@ -20,7 +20,7 @@ export function Dashboard() {
   useEffect(() => {
     async function fetchData() {
       const response = await api.get('transactions');
-      setTransactions(response.data);
+      setTransactions(response.data.transactions);
     }
     fetchData();
   }, []);

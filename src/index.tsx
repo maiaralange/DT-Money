@@ -1,14 +1,16 @@
-import { createServer } from 'miragejs';
+import { createServer, Model } from 'miragejs';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { App } from './App';
 import { TransactionType } from './components/NewTransactionModal';
 
 createServer({
-  routes() {
-    this.namespace = 'api';
-    this.get('/transactions', () => {
-      return [
+  models: {
+    transaction: Model
+  },
+  seeds(server) {
+    server.db.loadData({
+      transactions: [
         {
           id: 1,
           title: 'Desenvolvimento de site',
@@ -41,7 +43,17 @@ createServer({
           category: 'Venda',
           createdAt: '03/15/2021'
         }
-      ];
+      ]
+    });
+  },
+  routes() {
+    this.namespace = 'api';
+    this.post('/transactions', (schema, request) => {
+      const data = JSON.parse(request.requestBody);
+      return schema.create('transaction', data);
+    });
+    this.get('/transactions', () => {
+      return this.schema.all('transaction');
     });
   }
 });
