@@ -7,3 +7,8 @@ export const formatCurrency = (value: number) => {
 
 export const formatDate = (date: Date) =>
   new Intl.DateTimeFormat('pt-BR').format(date);
+
+export const formatAmount = (value: number) => {
+  if (!value) return '';
+  return value.toString();
+};

@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import closeImage from '../../assets/close.svg';
 import incomeImage from '../../assets/income.svg';
 import outcomeImage from '../../assets/outcome.svg';
+import { formatAmount } from '../../commons/Formatter';
 import { useTransactions } from '../../hooks/useTransactions';
 import { Container, RadioBox, TransactionTypeContainer } from './styles';
 
@@ -34,10 +35,10 @@ export function NewTransactionModal({
       category,
       type
     });
-    resetInputs();
+    resetInputsAndClose();
   }
 
-  function resetInputs() {
+  function resetInputsAndClose() {
     onRequestClose();
     setTitle('');
     setAmount(0);
@@ -54,7 +55,7 @@ export function NewTransactionModal({
     >
       <button
         type="button"
-        onClick={onRequestClose}
+        onClick={resetInputsAndClose}
         className="react-modal-close"
       >
         <img src={closeImage} alt="Fechar modal" />
@@ -69,7 +70,7 @@ export function NewTransactionModal({
         <input
           placeholder="Valor"
           type="number"
-          value={amount}
+          value={formatAmount(amount)}
           onChange={(event) => setAmount(Number(event.target.value))}
         />
 
