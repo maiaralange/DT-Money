@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { api } from '../../services/api';
+import { TransactionType } from '../NewTransactionModal';
 import { Summary } from '../Summary';
 import { TransactionsTable } from '../TransactionsTable';
 import { Container } from './styles';
@@ -8,7 +9,7 @@ export interface Transaction {
   id: number;
   title: string;
   amount: number;
-  type: 'deposit' | 'withdraw';
+  type: TransactionType;
   category: string;
   createdAt: Date;
 }

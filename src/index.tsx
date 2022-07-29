@@ -2,6 +2,7 @@ import { createServer } from 'miragejs';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { App } from './App';
+import { TransactionType } from './components/NewTransactionModal';
 
 createServer({
   routes() {
@@ -12,7 +13,7 @@ createServer({
           id: 1,
           title: 'Desenvolvimento de site',
           amount: 12000,
-          type: 'deposit',
+          type: TransactionType.Deposit,
           category: 'Venda',
           createdAt: '04/13/2021'
         },
@@ -20,7 +21,7 @@ createServer({
           id: 2,
           title: 'Hamburger',
           amount: 59,
-          type: 'withdraw',
+          type: TransactionType.Withdraw,
           category: 'Alimentação',
           createdAt: '04/10/2021'
         },
@@ -28,7 +29,7 @@ createServer({
           id: 3,
           title: 'Aluguel do apartamento',
           amount: 1200,
-          type: 'withdraw',
+          type: TransactionType.Withdraw,
           category: 'Casa',
           createdAt: '03/27/2021'
         },
@@ -36,7 +37,7 @@ createServer({
           id: 4,
           title: 'Computador',
           amount: 5400,
-          type: 'deposit',
+          type: TransactionType.Deposit,
           category: 'Venda',
           createdAt: '03/15/2021'
         }
