@@ -84,4 +84,11 @@ export const GlobalStyle = createGlobalStyle`
       filter: brightness(0.8);
     }
   }
+
+  .no-data-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-body);
+  }
 `;

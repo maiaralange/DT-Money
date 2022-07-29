@@ -14,28 +14,32 @@ export function TransactionsTable() {
 
   return (
     <Container>
-      <table>
-        <thead>
-          <tr>
-            <th>Título</th>
-            <th>Valor</th>
-            <th>Categoria</th>
-            <th>Data</th>
-          </tr>
-        </thead>
-        <tbody>
-          {sortTransactions().map((transaction) => (
-            <tr key={transaction.id}>
-              <td>{transaction.title}</td>
-              <td className={transaction.type}>
-                {formatCurrency(transaction.amount)}
-              </td>
-              <td>{transaction.category}</td>
-              <td>{formatDate(new Date(transaction.createdAt))}</td>
+      {transactions.length > 0 ? (
+        <table>
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Valor</th>
+              <th>Categoria</th>
+              <th>Data</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {sortTransactions().map((transaction) => (
+              <tr key={transaction.id}>
+                <td>{transaction.title}</td>
+                <td className={transaction.type}>
+                  {formatCurrency(transaction.amount)}
+                </td>
+                <td>{transaction.category}</td>
+                <td>{formatDate(new Date(transaction.createdAt))}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p className="no-data-message">Nenhuma transação cadastrada.</p>
+      )}
     </Container>
   );
 }
