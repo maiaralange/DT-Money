@@ -8,7 +8,7 @@ import { TransactionType } from '../NewTransactionModal';
 import { Container } from './styles';
 
 export function Summary() {
-  const transactions = useContext(TransactionsContext);
+  const { transactions } = useContext(TransactionsContext);
   const [incomes, setIncomes] = useState(0);
   const [outcomes, setOutcomes] = useState(0);
   const [total, setTotal] = useState(0);
