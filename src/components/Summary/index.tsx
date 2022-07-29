@@ -1,16 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import incomeImage from '../../assets/income.svg';
 import outcomeImage from '../../assets/outcome.svg';
 import totalImage from '../../assets/total.svg';
+import { TransactionsContext } from '../../TransactionsContext';
 import { Transaction } from '../Dashboard';
 import { TransactionType } from '../NewTransactionModal';
 import { Container } from './styles';
 
-interface SummaryProps {
-  transactions: Transaction[];
-}
-
-export function Summary({ transactions }: SummaryProps) {
+export function Summary() {
+  const transactions = useContext(TransactionsContext);
   const [incomes, setIncomes] = useState(0);
   const [outcomes, setOutcomes] = useState(0);
   const [total, setTotal] = useState(0);
@@ -27,7 +25,7 @@ export function Summary({ transactions }: SummaryProps) {
     return transactions
       .filter((transaction) => transaction.type === type)
       .map((transaction) => transaction.amount)
-      .reduce((acc, curr) => acc + curr);
+      .reduce((acc, curr) => acc + curr, 0);
   }
 
   return (

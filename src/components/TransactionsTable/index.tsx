@@ -1,11 +1,10 @@
-import { Transaction } from '../Dashboard';
+import { useContext } from 'react';
+import { TransactionsContext } from '../../TransactionsContext';
 import { Container } from './styles';
 
-interface TransactionsTableProps {
-  transactions: Transaction[];
-}
+export function TransactionsTable() {
+  const transactions = useContext(TransactionsContext);
 
-export function TransactionsTable({ transactions }: TransactionsTableProps) {
   return (
     <Container>
       <table>
