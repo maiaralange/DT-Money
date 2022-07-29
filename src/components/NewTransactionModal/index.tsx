@@ -21,7 +21,6 @@ export function NewTransactionModal({
   onRequestClose
 }: NewTransactionModalProps) {
   const { createTransaction } = useContext(TransactionsContext);
-
   const [type, setType] = useState(TransactionType.Deposit);
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
@@ -35,6 +34,10 @@ export function NewTransactionModal({
       category,
       type
     });
+    resetInputs();
+  }
+
+  function resetInputs() {
     onRequestClose();
     setTitle('');
     setAmount(0);

@@ -9,16 +9,16 @@ import { Container } from './styles';
 
 export function Summary() {
   const { transactions } = useContext(TransactionsContext);
-  const [incomes, setIncomes] = useState(0);
-  const [outcomes, setOutcomes] = useState(0);
+  const [deposits, setDeposits] = useState(0);
+  const [withdraws, setWithdraws] = useState(0);
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    const incomeSum = sumAllFromType(TransactionType.Deposit, transactions);
-    const outcomeSum = sumAllFromType(TransactionType.Withdraw, transactions);
-    setIncomes(incomeSum);
-    setOutcomes(outcomeSum);
-    setTotal(incomeSum - outcomeSum);
+    const depositSum = sumAllFromType(TransactionType.Deposit, transactions);
+    const withdrawSum = sumAllFromType(TransactionType.Withdraw, transactions);
+    setDeposits(depositSum);
+    setWithdraws(withdrawSum);
+    setTotal(depositSum - withdrawSum);
   }, [transactions]);
 
   function sumAllFromType(type: TransactionType, transactions: Transaction[]) {
@@ -39,7 +39,7 @@ export function Summary() {
           {new Intl.NumberFormat('pt-BR', {
             style: 'currency',
             currency: 'BRL'
-          }).format(incomes)}
+          }).format(deposits)}
         </strong>
       </div>
       <div>
@@ -52,7 +52,7 @@ export function Summary() {
           {new Intl.NumberFormat('pt-BR', {
             style: 'currency',
             currency: 'BRL'
-          }).format(outcomes)}
+          }).format(withdraws)}
         </strong>
       </div>
       <div className="highlight-background">
