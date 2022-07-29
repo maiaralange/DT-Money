@@ -16,14 +16,14 @@ export function Summary({ transactions }: SummaryProps) {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    const incomeSum = sumAllFromType(TransactionType.Deposit);
-    const outcomeSum = sumAllFromType(TransactionType.Withdraw);
+    const incomeSum = sumAllFromType(TransactionType.Deposit, transactions);
+    const outcomeSum = sumAllFromType(TransactionType.Withdraw, transactions);
     setIncomes(incomeSum);
     setOutcomes(outcomeSum);
     setTotal(incomeSum + outcomeSum);
   }, [transactions]);
 
-  function sumAllFromType(type: TransactionType) {
+  function sumAllFromType(type: TransactionType, transactions: Transaction[]) {
     return transactions
       .filter((transaction) => transaction.type === type)
       .map((transaction) => transaction.amount)
