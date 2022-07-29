@@ -18,7 +18,7 @@ export function Summary() {
     const outcomeSum = sumAllFromType(TransactionType.Withdraw, transactions);
     setIncomes(incomeSum);
     setOutcomes(outcomeSum);
-    setTotal(incomeSum + outcomeSum);
+    setTotal(incomeSum - outcomeSum);
   }, [transactions]);
 
   function sumAllFromType(type: TransactionType, transactions: Transaction[]) {
