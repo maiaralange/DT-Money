@@ -5,6 +5,13 @@ import { Container } from './styles';
 export function TransactionsTable() {
   const { transactions } = useTransactions();
 
+  function sortTransactions() {
+    return transactions.sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    );
+  }
+
   return (
     <Container>
       <table>
@@ -17,7 +24,7 @@ export function TransactionsTable() {
           </tr>
         </thead>
         <tbody>
-          {transactions.map((transaction) => (
+          {sortTransactions().map((transaction) => (
             <tr key={transaction.id}>
               <td>{transaction.title}</td>
               <td className={transaction.type}>
