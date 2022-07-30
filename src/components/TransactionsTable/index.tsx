@@ -38,7 +38,7 @@ export function TransactionsTable() {
           </tbody>
         </table>
       ) : (
-        <p className="no-data-message">Nenhuma transação cadastrada.</p>
+        <p>Nenhuma transação cadastrada.</p>
       )}
     </Container>
   );

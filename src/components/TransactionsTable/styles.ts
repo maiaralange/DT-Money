@@ -35,4 +35,9 @@ export const Container = styled.div`
       }
     }
   }
+
+  p {
+    text-align: center;
+    color: var(--text-body);
+  }
 `;
